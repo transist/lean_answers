@@ -1,0 +1,28 @@
+<div class='page-header'><h1><%= edit_hypothesis_title(@hypothesis) %></h1></div>
+<%= form_for([@project, @hypothesis]) do |f| %>
+  <fieldset>
+    <div class="control-group">
+      <label class="control-label" for="name">Hypothesis</label>
+      <div class="controls">
+        <%= f.text_area :content, :placeholder => 'Hypothesis', :class => 'span6',:rows => 5 %>
+      </div>
+    </div>
+    <%if params['state'] %>
+    <div class="control-group">
+      <label class="control-label" for="name">State</label>
+      <div class="controls">
+        <%= f.select :state, [['Choose State', -1], ['Current', 'current'], ['Pending', 'pending'], ['Accept', 'accepted'], ['Reject', 'rejected']], :selected => params[:state]  %>
+      </div>
+    </div>
+      <div class="control-group">
+        <label class="control-label" for="name">Reason</label>
+        <div class="controls">
+          <%= f.text_area :reason, :placeholder => 'Reason', :class => 'span6',:rows => 5 %>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
+  <div class='actions'>
+    <%= f.submit 'Update', :class => 'btn btn-large btn-primary' %> <%= link_to 'Cancel', project_url(@project),  :class => 'btn btn-large' %>
+  </div>
+<% end %>

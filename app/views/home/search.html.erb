@@ -1,0 +1,33 @@
+<ul class="breadcrumb">
+  <li>
+    <a href="<%= request.url %>">Search</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="#"><%= params[:q] %></a> <span class="divider">/</span>
+  </li>
+  <li class="active">Results</li>
+</ul>
+<div class='page-header'><h1><%= params[:q] %></h1></div>
+
+
+
+<% if @projects.size == 0 %>
+
+<% else %>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+  <% @projects.each do |p| %>
+   <tr>
+     <td><%= link_to p.name, p %></td>
+     <td><%= link_to p.description, p %></td>
+     <td><%= link_to 'Edit', edit_project_url(p) %> <%= link_to 'Destroy', p, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+   </tr>
+  <% end %>
+  </table>
+<% end %>

@@ -1,0 +1,2 @@
+class ProblemHypothesis < Hypothesis
+end

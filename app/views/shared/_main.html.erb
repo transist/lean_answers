@@ -1,0 +1,48 @@
+<% if content_for?(:skinny_sidebar) %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span2 column">
+        <%= yield :skinny_sidebar %>
+      </div>
+      <div class="span10 column">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if content_for?(:sidebar) %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span4 column">
+        <%= yield :sidebar %>
+      </div>
+      <div class="span8 column">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if content_for?(:fat_sidebar) %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span6 column">
+        <%= yield :fat_sidebar %>
+      </div>
+      <div class="span6 column">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if !content_for?(:sidebar) && !content_for?(:skinny_sidebar) && !content_for?(:fat_sidebar)%>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span16 column">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+<% end %>

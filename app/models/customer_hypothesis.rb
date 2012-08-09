@@ -1,0 +1,3 @@
+class CustomerHypothesis < Hypothesis
+    
+end

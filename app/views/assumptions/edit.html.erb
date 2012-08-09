@@ -1,0 +1,28 @@
+<div class='page-header'><h1>Edit Assumption</h1></div>
+<%= form_for([@project, @assumption]) do |f| %>
+  <fieldset>
+    <div class="control-group">
+      <label class="control-label" for="name">Description</label>
+      <div class="controls">
+        <%= f.text_area :assumption, :placeholder => 'Assumption', :class => 'span6',:rows => 5 %>
+      </div>
+    </div>
+    <%if params['state'] %>
+    <div class="control-group">
+      <label class="control-label" for="name">State</label>
+      <div class="controls">
+        <%= f.select :state, [['Choose State', -1], ['Invalid', 'invalid'], ['Valid', 'valid']], :selected => @assumption.state  %>
+      </div>
+    </div>
+      <div class="control-group">
+        <label class="control-label" for="name">Reason</label>
+        <div class="controls">
+          <%= f.text_area :reason, :placeholder => 'Reason', :class => 'span6',:rows => 5 %>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
+  <div class='actions'>
+    <%= f.submit 'Update', :class => 'btn btn-large btn-primary' %> <%= link_to 'Cancel', project_path(params[:project_id]),  :class => 'btn btn-large' %>
+  </div>
+<% end %>

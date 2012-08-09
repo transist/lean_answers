@@ -1,0 +1,20 @@
+<% content_for :skinny_sidebar do %>
+  something
+<% end %>
+
+<div class='page-header'><h1>Projects<%= link_to 'New Project', new_project_url, :class => 'btn pull-right'%></h1></div>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+<% @hypotheses.each do |p| %>
+ <tr>
+   <td><%= link_to p.content, hypothesis_url(p) %></td>
+   <td><%= link_to 'Edit', edit_hypothesis_url(p) %> <%= link_to 'Destroy', hypothesis_url(p), :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+ </tr>
+<% end %>
+</table>

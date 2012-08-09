@@ -1,0 +1,14 @@
+<div class='hero-unit'>
+    <span class="btn-group pull-right">
+    <a class="btn btn-large dropdown-toggle" data-toggle="dropdown" href="#">
+      New Hypothesis
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'New Customer Hypothesis', new_project_hypothesis_path(project, :type => 'customer') %></li>
+      <li><%= link_to 'New Problem Hypothesis', new_project_hypothesis_path(project, :type => 'problem') %></li>
+      <li><%= link_to 'New Solution Hypothesis', new_project_hypothesis_path(project, :type => 'solution') %></li>
+    </ul>
+  </span>
+  <h2>No Hypotheses yet</h2>
+</div>

@@ -1,0 +1,2 @@
+class SurveyTemplate < Survey
+end

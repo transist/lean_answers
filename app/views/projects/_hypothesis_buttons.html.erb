@@ -1,0 +1,15 @@
+<div class="btn-toolbar pull-right">
+  <div class='btn-group'>
+    <%= link_to 'View', project_hypothesis_path(project, hypothesis), :class => 'btn btn-small'%>
+  </div>
+  <div class="btn-group">
+    <%= link_to 'Current', change_project_hypothesis_path(project, hypothesis, 'current'), :class => 'btn btn-small', :data => { :confirm => 'Are you sure?' } %>
+    <%= link_to 'Pend', change_project_hypothesis_path(project, hypothesis, 'pending'), :class => 'btn btn-small', :data => { :confirm => 'Are you sure?' } %>
+    <%= link_to 'Accept', change_project_hypothesis_path(project, hypothesis, 'accepted'), :class => 'btn btn-small pull-right', :data => { :confirm => 'Are you sure?' } %>
+    <%= link_to 'Reject', change_project_hypothesis_path(project, hypothesis, 'rejected'), :class => 'btn btn-small pull-right', :data => { :confirm => 'Are you sure?' } %>
+  </div>
+  <div class="btn-group">
+    <%= link_to 'Edit', edit_project_hypothesis_path(project, hypothesis), :class => 'btn btn-small pull-right' %>
+    <%= link_to 'Delete', project_hypothesis_path(project, hypothesis), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-small pull-right' %>
+  </div>
+</div>

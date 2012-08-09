@@ -1,0 +1,13 @@
+<div class='page-header'><h1>Studies<%= link_to 'New Study', new_study_url, :class => 'btn pull-right'%></h1></div>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+<% @studies.each do |p| %>
+ <tr>
+   <td><%= link_to p.name, p %> <%= link_to 'Destroy', study_url(p), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-small pull-right' %> <%= link_to 'Edit', edit_study_url(p), :class => 'btn btn-small pull-right' %></td>
+ </tr>
+<% end %>
+</table>

@@ -1,0 +1,2 @@
+class SolutionHypothesis < Hypothesis
+end

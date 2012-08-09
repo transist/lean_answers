@@ -1,0 +1,63 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="/">Lean Answers</a>
+      <% if logged_in? %>
+      <ul class="nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/projects/new">New Project</a></li>
+            <li class="divider"></li>
+            <% current_users_projects.each do |p| %>
+            <li><%=link_to p.name, p %></li>
+            <% end %>
+            <li class="divider"></li>
+            <li><a href="/projects">View All</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Studies <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/studies/new">New Study</a></li>
+            <li class="divider"></li>
+            <li><a href="/studies">View All</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Surveys <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/surveys/new">New Survey</a></li>
+            <li class="divider"></li>
+            <li><a href="/surveys">View All</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-search pull-left" action="/search">
+        <input type="text" name='q' class="search-query span2" placeholder="<%= (params[:q] ? params[:q] : 'Search') %>" <%= (params[:q] ? "value='"+params[:q]+"'" : '') %>>
+      </form>
+      <% else %>
+      <ul class="nav">
+        <li class="active">
+          <a href="/tour">Tour</a>
+        </li>
+      </ul>
+      <% end %>
+      <ul class="nav pull-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= (logged_in? ? 'Account' : 'Login')%> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <% if logged_in? %>
+            <li><a href="/settings">Settings</a></li>
+            <li class="divider"></li>
+            <li><a href="/logout">Logout</a></li>
+            <% else %>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<% if @surveys.size == 0 %>
+  <div class='hero-unit'>
+    <div class='row'>
+      <h1>You don't have any surveys?</h1>
+    </div>
+    <div class='row' style='margin-top:50px;'>
+      <%= link_to "Create Survey", new_survey_path,  :class => 'btn btn-large btn-primary'%>
+    </div>
+  </div>
+<% else %>
+  <div class='page-header'><h1>Surveys<%= link_to 'New Survey', new_survey_url, :class => 'btn pull-right'%></h1></div>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th></th>
+      </tr>
+    </thead>
+  <% @surveys.each do |s| %>
+   <tr>
+     <td><%= link_to s.name, s %><%= link_to 'Destroy', s, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-small pull-right' %><%= link_to 'Edit', edit_survey_url(s), :class => 'btn btn-small pull-right' %></td>
+   </tr>
+  <% end %>
+  </table>
+<% end %>

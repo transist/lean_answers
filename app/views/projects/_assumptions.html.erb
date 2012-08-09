@@ -1,0 +1,16 @@
+<div class='row'>
+  <h3>Assumptions<%= link_to 'New Assumption', new_project_assumption_path(@project), :class => 'btn pull-right' %></h3>
+  <% if  @project.assumptions.size == 0%><hr/><%else%>
+  <table class='table'>
+    <tr>
+      <th colspan="10">Description</th>
+    </tr>
+  <% @project.assumptions.each do |a| %>
+   <tr>
+     <td colspan='10'><div class='span10'><%= link_to a.assumption, project_assumption_path(@project, a) %></div> <div class='span2 pull-right'><%= link_to 'Invalidate', change_project_assumption_url(@project, a, 'invalid'), :class => 'btn btn-small pull-right', :data => { :confirm => 'Are you sure?' } %> <%= link_to 'Validate', change_project_assumption_path(@project, a, 'valid'), :class => 'btn btn-small pull-right', :data => { :confirm => 'Are you sure?' } %> <br/><br/><%= link_to 'Destroy', project_assumption_path(@project, a), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-small pull-right' %> <%= link_to 'Edit', edit_project_assumption_url(@project, a), :class => 'btn btn-small pull-right' %></div></td>
+   </tr>
+  <% end %>
+  </table>  
+  <% end %>
+  
+</div>

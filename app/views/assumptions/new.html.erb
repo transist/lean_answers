@@ -1,0 +1,14 @@
+<div class='page-header'><h1>New Assumption</h1></div>
+<%= form_for([@project, @assumption]) do |f| %>
+  <fieldset>
+    <div class="control-group">
+      <label class="control-label" for="name">Description</label>
+      <div class="controls">
+        <%= f.text_area :assumption, :placeholder => 'Assumption', :class => 'span6',:rows => 5 %>
+      </div>
+    </div>
+  </fieldset>
+  <div class='actions'>
+    <%= f.submit 'Create', :class => 'btn btn-large btn-primary' %> <%= link_to 'Cancel', project_path(params[:project_id]),  :class => 'btn btn-large' %>
+  </div>
+<% end %>
