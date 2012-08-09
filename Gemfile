@@ -7,7 +7,7 @@ gem 'texticle', '~> 2.0', :require => 'texticle/rails'
 gem 'cancan'
 gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"
 gem 'haml'
-gem 'awesome_nested_set' # gem 'nested_set'
+gem 'awesome_nested_set'
 gem 'the_sortable_tree'
 gem 'state_machine'
 gem 'emailyak', :git => 'git://github.com/ballantyne/emailyak.git'
