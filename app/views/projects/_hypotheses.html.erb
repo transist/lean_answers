@@ -24,9 +24,9 @@
         <%if @project.current_hypotheses.size > 0%>
         <table class='table table-bordered'>
           
-          <%= render :partial => 'hypothesis_row', :locals => {:hypothesis => @project.current_customer} %>
-          <%= render :partial => 'hypothesis_row', :locals => {:hypothesis => @project.current_problem} %>
-          <%= render :partial => 'hypothesis_row', :locals => {:hypothesis => @project.current_solution} %>
+          <%= render :partial => 'hypothesis_row', :locals => {:hypothesis => @project.current_customer, :hypothesis_type => 'customer'} %>
+          <%= render :partial => 'hypothesis_row', :locals => {:hypothesis => @project.current_problem, :hypothesis_type => 'problem'} %>
+          <%= render :partial => 'hypothesis_row', :locals => {:hypothesis => @project.current_solution, :hypothesis_type => 'solution'} %>
         </table>
         <% else %>
           <%= render :partial => 'no_hypotheses', :locals => {:project => @project }%>

@@ -1,5 +1,6 @@
 class Email < ActiveRecord::Base
   attr_accessible :bcc, :cc, :from, :html_version, :subject, :text_version, :to, :email_options, :reply_to_name, :reply_to_address, :css
+  serialize :email_options
   
   state_machine :state, :initial => :new do
     event :send_email do
@@ -54,14 +55,7 @@ class Email < ActiveRecord::Base
   end
   
   def send!
-    params = setup_params
-    EmailYak::Email.send(params)
-    self.send_email
-    self
-  rescue => e
-    self.failure_message = e.to_s
-    self.send_failure
-    self
+    raise "Sorry, this class can't use the send! method."
   end
   
   def self.bootstrap_css
