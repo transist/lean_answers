@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  to: MyText
+  from: MyText
+  cc: MyText
+  bcc: MyText
+  subject: MyText
+  text_version: MyText
+  html_version: MyText
+
+two:
+  to: MyText
+  from: MyText
+  cc: MyText
+  bcc: MyText
+  subject: MyText
+  text_version: MyText
+  html_version: MyText

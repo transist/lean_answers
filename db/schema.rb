@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808070503) do
+ActiveRecord::Schema.define(:version => 20120809044844) do
 
   create_table "answers", :force => true do |t|
     t.integer  "choice_id"
@@ -41,6 +41,26 @@ ActiveRecord::Schema.define(:version => 20120808070503) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "question_id"
+  end
+
+  create_table "emails", :force => true do |t|
+    t.text     "to"
+    t.text     "from"
+    t.text     "cc"
+    t.text     "bcc"
+    t.text     "subject"
+    t.text     "text_version"
+    t.text     "html_version"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.string   "state"
+    t.string   "type"
+    t.text     "email_options"
+    t.string   "reply_to_name"
+    t.string   "reply_to_address"
+    t.boolean  "include_bootstrap_css", :default => true
+    t.text     "css"
+    t.text     "failure_message"
   end
 
   create_table "hypotheses", :force => true do |t|

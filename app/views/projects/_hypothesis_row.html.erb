@@ -4,7 +4,7 @@
   <%= render :partial => 'hypothesis_buttons', :locals => {:project => hypothesis.project, :hypothesis => hypothesis}%>
   <p class='hypothesis_description'><span class="label <%= type_css(hypothesis.type)%>">
     <%= hypothesis.type.underscore.titleize %></span> 
-    <span class="label <%= state_css(hypothesis.state)%>"><%= hypothesis.state %></span> 
+    <span class="label <%= state_css(hypothesis.state) %>"><%= hypothesis.state.titleize %></span> 
   </p>
   <p class='hypothesis_description'>
     <%= hypothesis.content %>

@@ -10,6 +10,9 @@ gem 'haml'
 gem 'awesome_nested_set' # gem 'nested_set'
 gem 'the_sortable_tree'
 gem 'state_machine'
+gem 'emailyak', :git => 'git://github.com/ballantyne/emailyak.git'
+gem 'premailer'
+gem 'nokogiri'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
