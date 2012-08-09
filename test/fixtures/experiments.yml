@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyText
+  description: MyText
+  project_id: 1
+  customer_hypothesis_id: 1
+  problem_hypothesis_id: 1
+  solution_hypothesis_id: 1
+  state: MyString
+
+two:
+  name: MyText
+  description: MyText
+  project_id: 1
+  customer_hypothesis_id: 1
+  problem_hypothesis_id: 1
+  solution_hypothesis_id: 1
+  state: MyString

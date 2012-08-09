@@ -23,6 +23,7 @@ class AssumptionsController < ApplicationController
     # @assumption = @project.assumptions.build
     @assumption = Assumption.create(params[:assumption])
     @project.assumptions << @assumption
+    @assumption.make_current
     redirect_to @project, :notice => "Created!"  
   end
   
@@ -30,6 +31,10 @@ class AssumptionsController < ApplicationController
     @project = Project.find(params[:project_id])
     @assumption = Assumption.find(params[:id])
     @assumption.update_attributes(params[:assumption])
+    @assumption.accept if params[:assumption]['state'] == 'accepted'
+    @assumption.reject if params[:assumption]['state'] == 'rejected'
+    @assumption.make_current if params[:assumption]['state'] == 'current'
+    @assumption.na if params[:assumption]['state'] == 'not_applicable'
     redirect_to @project, :notice => "Updated!"  
   end
   

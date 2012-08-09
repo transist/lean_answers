@@ -7,6 +7,11 @@ class Project < ActiveRecord::Base
   has_many :users, :through => :memberships
   has_many :assumptions
   has_many :hypotheses
+  has_many :experiments
+  
+  def current_assumptions
+    h = Assumption.all(:conditions => {:project_id => self.id, :state => 'current'})
+  end
   
   def current_hypotheses
     h = Hypothesis.all(:conditions => {:project_id => self.id, :state => 'current'})

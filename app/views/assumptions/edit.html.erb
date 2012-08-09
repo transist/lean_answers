@@ -11,7 +11,7 @@
     <div class="control-group">
       <label class="control-label" for="name">State</label>
       <div class="controls">
-        <%= f.select :state, [['Choose State', -1], ['Invalid', 'invalid'], ['Valid', 'valid']], :selected => @assumption.state  %>
+        <%= f.select :state, [['Choose State', -1], ['Current', 'current'], ['Not Applicable', 'not_applicable'], ['Accepted', 'accepted'], ['Rejected', 'rejected']], :selected => params[:state]  %>
       </div>
     </div>
       <div class="control-group">

@@ -1,0 +1,13 @@
+<% if assumption %>
+<tr>
+  <td>
+  <%= render :partial => 'assumption_buttons', :locals => {:project => assumption.project, :assumption => assumption}%>
+  <p class='assumption_description'>
+    <span class="label <%= state_css(assumption.state) %>"><%= assumption.state.titleize %></span> 
+  </p>
+  <p class='assumption_description'>
+    <%= assumption.assumption %>
+  </p>
+  </td>
+</tr>
+<% end %>

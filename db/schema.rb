@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120809063944) do
+ActiveRecord::Schema.define(:version => 20120809102942) do
 
   create_table "answers", :force => true do |t|
     t.integer  "choice_id"
@@ -62,6 +62,18 @@ ActiveRecord::Schema.define(:version => 20120809063944) do
     t.text     "css"
     t.text     "failure_message"
     t.string   "name"
+  end
+
+  create_table "experiments", :force => true do |t|
+    t.text     "name"
+    t.text     "description"
+    t.integer  "project_id"
+    t.integer  "customer_hypothesis_id"
+    t.integer  "problem_hypothesis_id"
+    t.integer  "solution_hypothesis_id"
+    t.string   "state"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
   create_table "hypotheses", :force => true do |t|
