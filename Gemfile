@@ -13,12 +13,18 @@ gem 'state_machine'
 gem 'emailyak', :git => 'git://github.com/ballantyne/emailyak.git'
 gem 'premailer'
 gem 'nokogiri'
+gem 'sidekiq'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+group :production do
+  gem 'unicorn'
+end
+
+
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
