@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120809044844) do
+ActiveRecord::Schema.define(:version => 20120809063944) do
 
   create_table "answers", :force => true do |t|
     t.integer  "choice_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20120809044844) do
     t.boolean  "include_bootstrap_css", :default => true
     t.text     "css"
     t.text     "failure_message"
+    t.string   "name"
   end
 
   create_table "hypotheses", :force => true do |t|
