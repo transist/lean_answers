@@ -14,6 +14,7 @@ gem 'emailyak', :git => 'git://github.com/ballantyne/emailyak.git'
 gem 'premailer'
 gem 'nokogiri'
 gem 'sidekiq'
+gem 'paper_trail'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
