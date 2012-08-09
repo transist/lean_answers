@@ -33,7 +33,7 @@ class AssumptionsController < ApplicationController
     @assumption.update_attributes(params[:assumption])
     @assumption.accept if params[:assumption]['state'] == 'accepted'
     @assumption.reject if params[:assumption]['state'] == 'rejected'
-    @assumption.make_current if params[:assumption]['state'] == 'current'
+    # @assumption.make_current if params[:assumption]['state'] == 'current'
     @assumption.na if params[:assumption]['state'] == 'not_applicable'
     redirect_to @project, :notice => "Updated!"  
   end

@@ -10,7 +10,7 @@ class Assumption < ActiveRecord::Base
   
   belongs_to :project, :class_name => "Project", :foreign_key => "project_id"
   
-  state_machine :state, :initial => :pending do
+  state_machine :state, :initial => :current do
 
     event :make_current do
       transition all => :current
