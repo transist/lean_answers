@@ -9,13 +9,13 @@
           <ul class="dropdown-menu">
             <li><a href="/projects/new">New Project</a></li>
             <% unless current_users_projects.size == 0%>
-            <li class="divider"></li>
-            <% current_users_projects.each do |p| %>
-            <li><%=link_to p.name, p %></li>
+              <li class="divider"></li>
+              <% current_users_projects.each do |p| %>
+                <li><%=link_to p.name, p %></li>
+              <% end %>
             <% end %>
             <li class="divider"></li>
             <li><a href="/projects">View All</a></li>
-            <% end %>
           </ul>
         </li>
         <li class="dropdown">
