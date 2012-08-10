@@ -14,6 +14,7 @@ class HypothesesController < ApplicationController
   
   def show  
     @hypothesis = klass.find(params[:id])
+    @pane = true
   end
   
   def edit  
