@@ -1,7 +1,7 @@
 <% if hypothesis %>
 <tr>
   <td>
-  <%= render :partial => 'hypothesis_buttons', :locals => {:project => hypothesis.project, :hypothesis => hypothesis}%>
+  <%= render :partial => '/projects/hypothesis_buttons', :locals => {:project => hypothesis.project, :hypothesis => hypothesis}%>
   <p class='hypothesis_description'><span class="label <%= type_css(hypothesis.type)%>">
     <%= hypothesis.type.underscore.titleize %></span> 
     <span class="label <%= state_css(hypothesis.state) %>"><%= hypothesis.state.titleize %></span> 
@@ -17,11 +17,11 @@
     <td>
       <% case hypothesis_type %>
       <% when 'customer' %>
-      <%= link_to 'New Customer Hypothesis', new_project_hypothesis_path(params[:id], :type => 'customer'), :class => 'btn pull-right' %>
+      <%= link_to 'New Customer Hypothesis', new_project_hypothesis_path((params[:project_id] ? params[:project_id] : params[:id]), :type => 'customer'), :class => 'btn pull-right' %>
       <% when 'problem' %>
-      <%= link_to 'New Problem Hypothesis', new_project_hypothesis_path(params[:id], :type => 'problem'), :class => 'btn pull-right' %>
+      <%= link_to 'New Problem Hypothesis', new_project_hypothesis_path((params[:project_id] ? params[:project_id] : params[:id]), :type => 'problem'), :class => 'btn pull-right' %>
       <% when 'solution' %>
-      <%= link_to 'New Solution Hypothesis', new_project_hypothesis_path(params[:id], :type => 'solution'), :class => 'btn pull-right' %>
+      <%= link_to 'New Solution Hypothesis', new_project_hypothesis_path((params[:project_id] ? params[:project_id] : params[:id]), :type => 'solution'), :class => 'btn pull-right' %>
       <% end %>
       
       <br/><br/>

@@ -1,9 +1,9 @@
 <% if hypotheses.size > 0 %>
 <table class='table table-bordered'>
   <% hypotheses.each do |p| %>
-    <%= render :partial => 'hypothesis_row', :locals => {:hypothesis => p} %>
+    <%= render :partial => '/projects/hypothesis_row', :locals => {:hypothesis => p} %>
   <% end %>
 </table>
 <% else %>
-  <%= render :partial => 'no_hypotheses', :locals => {:project => @project }%>
+  <%= render :partial => '/projects/no_hypotheses', :locals => {:project => @project }%>
 <% end %>

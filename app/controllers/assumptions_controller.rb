@@ -1,6 +1,11 @@
 class AssumptionsController < ApplicationController
   def index
-    @assumptions = Assumption.all
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+      @assumptions = @project.assumptions
+    else
+      @assumptions = Assumption.all
+    end
   end
   
   def new

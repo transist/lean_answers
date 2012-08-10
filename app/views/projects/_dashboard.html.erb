@@ -1,0 +1,19 @@
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#current" data-toggle="tab">Summary</a></li>
+    <li><%= link_to 'Hypotheses', project_hypotheses_path(@project)%></li>
+    <li><%= link_to 'Assumptions', project_assumptions_path(@project)%></li>
+    <li><%= link_to 'Research', project_experiments_path(@project)%></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="current">
+      <div class='span6'>
+        <%= render :partial => 'hypotheses'  %>
+      </div>
+      <div class='span6'>
+        <%= render :partial => 'assumptions'  %>
+      </div>
+    </div>
+  </div>
+</div>

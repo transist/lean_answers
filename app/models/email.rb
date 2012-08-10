@@ -17,9 +17,10 @@ class Email < ActiveRecord::Base
   end
   
   def setup_css
-    css = ''
+    css = self.header
     css += style_tag(Email.bootstrap_css) if self.include_bootstrap_css
-    css += style_tag(self.css) if self.css    
+    css += style_tag(self.css) if self.css  
+    css += "</head><body>"  
     css
   end
   
@@ -28,8 +29,22 @@ class Email < ActiveRecord::Base
   end
   
   def setup_html
-    template = setup_css + self.html_version
+    template = setup_css + self.html_version + self.footer
     Premailer.new(Document.new(template).interpolate(self.email_options), {:with_html_string => true}).to_inline_css
+  end
+  
+  def header
+    @header = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'+ 
+              '<html xmlns="http://www.w3.org/1999/xhtml">'+
+              '<head>'+
+              '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'+
+              '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>'+
+              '<title>Your Message Subject or Title</title>'
+    @header
+  end
+  
+  def footer
+    '</body></html>'
   end
   
   def setup_params

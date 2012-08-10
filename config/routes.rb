@@ -24,6 +24,12 @@ Lsm::Application.routes.draw do
         get ':state' => 'assumptions#edit', :as => 'change'
       end
     end
+    resources :experiments do 
+      member do
+        get 'edit' => 'assumptions#edit', :as => 'edit'
+        get ':state' => 'assumptions#edit', :as => 'change'
+      end
+    end
     resources :hypotheses do 
       member do
         get 'edit' => 'hypotheses#edit', :as => 'edit'

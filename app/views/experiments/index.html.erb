@@ -1,3 +1,4 @@
+<%= render :partial => '/projects/experiments' %>
 <% content_for :skinny_sidebar do %>
 <div class='row'>
   <div class='page-header'><h2 class='fake_margin'><%= link_to @project.name, @project %></h2></div>
@@ -15,5 +16,3 @@
   <%= link_to 'Edit', edit_project_path(@project), :class => 'btn btn-small'%><br/><br/>
 </div>
 <% end %>
-<%= render :partial => '/projects/hypotheses' %>
-
