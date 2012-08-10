@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    logger.info("::::::::::::#{logged_in?}::::::::::::::::::::::::::::::::::::::::::::")
+    @projects = current_users_projects
   end
   
   def search
