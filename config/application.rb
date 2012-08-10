@@ -79,8 +79,3 @@ class Document
     @template.result(replacements.to_binding)
   end
 end
-
-
-Rails.application.routes.draw do
-  mount ApiTaster::Engine => "/api_taster" if Rails.env.development?
-end
