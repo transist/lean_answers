@@ -20,13 +20,8 @@
   </div>
   <% end %>
 <% else %>
-  <div class='page-header'><h1>Projects<%= link_to 'New Project', new_project_url, :class => 'btn pull-right'%></h1></div>
+  <div class='page-header projects_title'><h1>Projects<%= link_to 'New Project', new_project_url, :class => 'btn pull-right'%></h1></div>
   <table class='table'>
-    <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
   <% @projects.each do |p| %>
    <tr>
      <td><%= link_to p.name, p %><%= link_to 'Destroy', p, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-small pull-right' %><%= link_to 'Edit', edit_project_url(p), :class => 'btn btn-small pull-right' %><%= link_to 'View', p, :class => 'btn btn-small pull-right' %></td>
