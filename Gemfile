@@ -15,6 +15,7 @@ gem 'premailer'
 gem 'nokogiri'
 gem 'sidekiq'
 gem 'paper_trail'
+gem 'acts-as-taggable-on', '~> 2.3.1'
 
 
 group :assets do

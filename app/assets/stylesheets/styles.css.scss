@@ -18,3 +18,11 @@ tr p.hypothesis_description {
 .cleft {
   clear:left;
 }
+
+.page-header a {
+  text-decoration:none;
+}
+
+.page-header a:hover {
+  color:orange;
+}
