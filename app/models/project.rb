@@ -13,6 +13,7 @@ class Project < ActiveRecord::Base
   has_many :tasks
   acts_as_ordered_taggable
   
+  
   def current_assumptions
     h = Assumption.all(:conditions => {:project_id => self.id, :state => 'current'})
   end

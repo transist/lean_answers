@@ -13,6 +13,12 @@
         <%= f.text_area :description, :placeholder => 'Description', :class => 'span6',:rows => 5 %>
       </div>
     </div>
+    <div class="control-group">
+      <label class="control-label" for="name">Tags</label>
+      <div class="controls">
+        <%= f.text_field :tags_list, :placeholder => 'Tags', :class => 'input-xlarge' %>
+      </div>
+    </div>
   </fieldset>
   <div class='actions'>
     <%= f.submit 'Update', :class => 'btn btn-large btn-primary' %> <%= link_to 'Cancel', projects_url,  :class => 'btn btn-large' %>
