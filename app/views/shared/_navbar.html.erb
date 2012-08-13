@@ -2,7 +2,7 @@
   <div class="navbar-inner">
     <div class="container">
       <% if @project && !@project.new_record? %>
-        <%= link_to 'lean answers', @project, :class => 'brand'%>
+        <%= link_to 'lean answers', @project, :class => 'brand' %>
       <% else %>
       <a class="brand" href="/">lean answers</a>
       <% end %>
@@ -34,11 +34,12 @@
             <li><%= link_to 'Scorecards', project_scorecards_path(@project)%></li>
             <li><%= link_to 'Hypotheses', project_hypotheses_path(@project)%></li>
             <li><%= link_to 'Assumptions', project_assumptions_path(@project)%></li>
-            <li><%= link_to 'Experiments', project_experiments_path(@project)%></li>
-            <li class="divider"></li>        
+            <li><%= link_to 'Experiments', project_experiments_path(@project)%></li>      
             <li><%= link_to 'Documents', project_documents_path(@project)%></li>
             <li class="divider"></li>
             <li><%= link_to 'Members', project_memberships_path(@project)%></li>
+            <li class="divider"></li>
+            <li><%= link_to 'Edit Description', edit_project_path(@project)%></li>
           </ul>
         </li>
         <% end %>
