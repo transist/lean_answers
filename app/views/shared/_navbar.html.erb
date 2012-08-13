@@ -51,6 +51,9 @@
           <ul class="dropdown-menu">
             <% if logged_in? %>
             <li><a href="/settings">Settings</a></li>
+            <% if current_user.admin? %>
+            <li><a href="/admin">Administration</a></li>
+            <% end %>
             <li class="divider"></li>
             <li><a href="/logout">Logout</a></li>
             <% else %>

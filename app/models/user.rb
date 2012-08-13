@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   has_many :projects, :through => :memberships
   has_many :task_assignments
   has_many :tasks, :through => :task_assignments
+  
+  def admin?
+    true
+  end
 end

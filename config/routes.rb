@@ -1,6 +1,6 @@
 Lsm::Application.routes.draw do
   
-  get "admin/index"
+  get "admin" => 'admin#index'
 
   match 'register' => 'users#new'
   match 'login' => 'sessions#new'
