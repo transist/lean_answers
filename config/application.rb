@@ -70,7 +70,7 @@ class Hash
   end
 end
 
-class Document
+class ErbDocument
   def initialize(template)
     @template = ERB.new(template)
   end

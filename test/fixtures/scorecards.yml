@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  project_id: 1
+  sector: MyString
+  date_prepared: 2012-08-13
+  potential_start: MyString
+
+two:
+  project_id: 1
+  sector: MyString
+  date_prepared: 2012-08-13
+  potential_start: MyString

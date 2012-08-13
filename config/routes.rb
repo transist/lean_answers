@@ -17,11 +17,22 @@ Lsm::Application.routes.draw do
   resources :studies
   resources :users
   resources :projects do 
-    resources :memberships
+    resources :memberships do 
+      member do
+        get 'edit' => 'memberships#edit', :as => 'edit'
+        get ':state' => 'memberships#edit', :as => 'change'
+      end
+    end
     resources :assumptions do 
       member do
         get 'edit' => 'assumptions#edit', :as => 'edit'
         get ':state' => 'assumptions#edit', :as => 'change'
+      end
+    end
+    resources :scorecards do 
+      member do
+        get 'edit' => 'scorecards#edit', :as => 'edit'
+        get ':state' => 'scorecards#edit', :as => 'change'
       end
     end
     resources :experiments do 
@@ -37,6 +48,8 @@ Lsm::Application.routes.draw do
       end
     end
     resources :studies
+    resources :documents
+    resources :tasks
     resources :customer_hypotheses
     resources :problem_hypotheses
     resources :solution_hypotheses

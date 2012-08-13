@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120809102942) do
+ActiveRecord::Schema.define(:version => 20120813043927) do
 
   create_table "answers", :force => true do |t|
     t.integer  "choice_id"
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(:version => 20120809102942) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "question_id"
+  end
+
+  create_table "documents", :force => true do |t|
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "emails", :force => true do |t|
@@ -120,6 +126,15 @@ ActiveRecord::Schema.define(:version => 20120809102942) do
     t.string   "question_type"
   end
 
+  create_table "scorecards", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "sector"
+    t.date     "date_prepared"
+    t.string   "potential_start"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "studies", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -135,6 +150,22 @@ ActiveRecord::Schema.define(:version => 20120809102942) do
     t.datetime "updated_at",  :null => false
     t.text     "description"
     t.string   "survey_type"
+  end
+
+  create_table "task_assignments", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "task_id"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "project_id"
+    t.text     "name"
+    t.text     "decription"
+    t.string   "state"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

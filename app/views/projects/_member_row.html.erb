@@ -1,0 +1,14 @@
+<% if membership %>
+<tr>
+  <td>
+  <%= render :partial => '/projects/membership_buttons', :locals => {:project => membership.project, :membership => membership}%>
+  <p class='membership_description'><span class="label <%= type_css(membership.membership_type)%>">
+    <%= membership.membership_type.underscore.titleize %></span>
+  </p>
+  <p class='membership_description'>
+    <%= membership.user.email %>
+  </p>
+  </td>
+</tr>
+
+<% end %>

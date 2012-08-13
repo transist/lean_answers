@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   has_many :memberships
   has_many :projects, :through => :memberships
+  has_many :task_assignments
+  has_many :tasks, :through => :task_assignments
 end

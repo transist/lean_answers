@@ -13,7 +13,7 @@ class Email < ActiveRecord::Base
   end
   
   def setup_text
-    Document.new(self.text_version).interpolate(self.email_options)
+    ErbDocument.new(self.text_version).interpolate(self.email_options)
   end
   
   def setup_css
@@ -30,7 +30,7 @@ class Email < ActiveRecord::Base
   
   def setup_html
     template = setup_css + self.html_version + self.footer
-    Premailer.new(Document.new(template).interpolate(self.email_options), {:with_html_string => true}).to_inline_css
+    Premailer.new(ErbDocument.new(template).interpolate(self.email_options), {:with_html_string => true}).to_inline_css
   end
   
   def header

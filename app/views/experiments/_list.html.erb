@@ -1,0 +1,31 @@
+<% if @project.experiements.size == 0 %>
+  <% if logged_in? %>
+  
+  <div class='hero-unit'>
+    <div class='row'>
+      <h1>You don't have any projects?</h1>
+    </div>
+    <div class='row' style='margin-top:50px;'>
+      <%= link_to "Create Project", new_project_path,  :class => 'btn btn-large btn-primary'%>
+    </div>
+  </div>
+  <% else %>
+  <div class='hero-unit'>
+    <div class='row'>
+      <h1>Doing Research?</h1>
+    </div>
+    <div class='row' style='margin-top:50px;'>
+      <%= link_to "Signup", register_path,  :class => 'btn btn-large btn-primary'%>
+    </div>
+  </div>
+  <% end %>
+<% else %>
+  <div class='page-header projects_title'><h1>Projects<%= link_to 'New Project', new_project_url, :class => 'btn pull-right'%></h1></div>
+  <table class='table'>
+  <% @project.experiements.each do |p| %>
+   <tr>
+     <td><%= link_to p.name, p %><%= link_to 'Destroy', p, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-small pull-right' %><%= link_to 'Edit', edit_project_url(p), :class => 'btn btn-small pull-right' %><%= link_to 'View', p, :class => 'btn btn-small pull-right' %></td>
+   </tr>
+  <% end %>
+  </table>
+<% end %>

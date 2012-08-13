@@ -8,6 +8,9 @@ class Project < ActiveRecord::Base
   has_many :assumptions
   has_many :hypotheses
   has_many :experiments
+  has_many :scorecards
+  has_many :documents
+  has_many :tasks
   
   def current_assumptions
     h = Assumption.all(:conditions => {:project_id => self.id, :state => 'current'})
