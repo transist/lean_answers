@@ -1,67 +1,65 @@
-<div class='row'>
-  <div class='page-header'>
-    <h3>Experiments<span class="btn-group pull-right"><%= link_to 'New Experiment', new_project_experiment_path(@project), :class => 'btn' %></span></h3>
-  </div>
-  <div class="tabbable"> <!-- Only required for left/right tabs -->
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#current_experiments" data-toggle="tab">Current</a></li>
-      <li><a href="#pending_experiments" data-toggle="tab">Pending</a></li>
-      
-      <li><a href="#all_experiments" data-toggle="tab">All</a></li>
-      <li><a href="#accepted_experiments" data-toggle="tab">Accepted</a></li>
-      <li><a href="#rejected_experiments" data-toggle="tab">Rejected</a></li>
-    </ul>
+<div class='page-header'>
+  <h3>Experiments<span class="btn-group pull-right"><%= link_to 'New Experiment', new_project_experiment_path(@project), :class => 'btn' %></span></h3>
+</div>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#current_experiments" data-toggle="tab">Current</a></li>
+    <li><a href="#pending_experiments" data-toggle="tab">Pending</a></li>
+    
+    <li><a href="#all_experiments" data-toggle="tab">All</a></li>
+    <li><a href="#accepted_experiments" data-toggle="tab">Accepted</a></li>
+    <li><a href="#rejected_experiments" data-toggle="tab">Rejected</a></li>
+  </ul>
 
-    <div class="tab-content">
-      <div class="tab-pane active" id="current_experiments">
-        <% if @project.current_assumptions.size > 0 %>
-        <table class='table table-bordered'>
-          <% @project.assumptions.state_all('current').each do |a| %>
-          <%= render :partial => '/projects/assumption_row', :locals => {:assumption => a}  %>
-          <% end %>
-        </table>
+  <div class="tab-content">
+    <div class="tab-pane active" id="current_experiments">
+      <% if @project.current_assumptions.size > 0 %>
+      <table class='table table-bordered'>
+        <% @project.assumptions.state_all('current').each do |a| %>
+        <%= render :partial => '/projects/assumption_row', :locals => {:assumption => a}  %>
         <% end %>
-      </div>
-      
-      <div class="tab-pane" id="pending_experiments">
-        <% if @project.assumptions.state_all('not_applicable').size > 0 %>
-        <table class='table table-bordered'>
-          <% @project.assumptions.state_all('not_applicable').each do |a| %>
-          <%= render :partial => '/projects/assumption_row', :locals => {:assumption => a}  %>
-          <% end %>
-        </table>
+      </table>
+      <% end %>
+    </div>
+    
+    <div class="tab-pane" id="pending_experiments">
+      <% if @project.assumptions.state_all('not_applicable').size > 0 %>
+      <table class='table table-bordered'>
+        <% @project.assumptions.state_all('not_applicable').each do |a| %>
+        <%= render :partial => '/projects/assumption_row', :locals => {:assumption => a}  %>
         <% end %>
-      </div>
-      
-      <div class="tab-pane" id="all_experiments">
-        <%if @project.assumptions.size > 0%>
-        <table class='table table-bordered'>
-          <% @project.assumptions.state_all('current').each do |a| %>
-          <%= render :partial => '/projects/assumption_row', :locals => {:assumption => a}  %>
-          <% end %>
-        </table>
+      </table>
+      <% end %>
+    </div>
+    
+    <div class="tab-pane" id="all_experiments">
+      <%if @project.assumptions.size > 0%>
+      <table class='table table-bordered'>
+        <% @project.assumptions.state_all('current').each do |a| %>
+        <%= render :partial => '/projects/assumption_row', :locals => {:assumption => a}  %>
         <% end %>
-      </div>
-      
-      <div class="tab-pane" id="accepted_experiments">
-        <%if @project.assumptions.state_all('accepted').size > 0%>
-        <table class='table table-bordered'>
-          <% @project.assumptions.state_all('accepted').each do |a| %>
-          <%= render :partial => '/projects/assumption_row', :locals => {:assumption => a}  %>
-          <% end %>
-        </table>
+      </table>
+      <% end %>
+    </div>
+    
+    <div class="tab-pane" id="accepted_experiments">
+      <%if @project.assumptions.state_all('accepted').size > 0%>
+      <table class='table table-bordered'>
+        <% @project.assumptions.state_all('accepted').each do |a| %>
+        <%= render :partial => '/projects/assumption_row', :locals => {:assumption => a}  %>
         <% end %>
-      </div>
-      
-      <div class="tab-pane" id="rejected_experiments">
-        <%if @project.assumptions.state_all('rejected').size > 0%>
-        <table class='table table-bordered'>
-          <% @project.assumptions.state_all('rejected').each do |a| %>
-          <%= render :partial => '/projects/assumption_row', :locals => {:assumption => a}  %>
-          <% end %>
-        </table>
+      </table>
+      <% end %>
+    </div>
+    
+    <div class="tab-pane" id="rejected_experiments">
+      <%if @project.assumptions.state_all('rejected').size > 0%>
+      <table class='table table-bordered'>
+        <% @project.assumptions.state_all('rejected').each do |a| %>
+        <%= render :partial => '/projects/assumption_row', :locals => {:assumption => a}  %>
         <% end %>
-      </div>
+      </table>
+      <% end %>
     </div>
   </div>
 </div>
