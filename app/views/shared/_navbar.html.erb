@@ -11,15 +11,16 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/projects">View All</a></li>
-             <li class="divider"></li>
-            <li><a href="/projects/new">New Project</a></li>
+            <li><a href="/">View All</a></li>
+             
             <% unless current_users_projects.size == 0%>
               <li class="divider"></li>
               <% current_users_projects.each do |p| %>
                 <li><%=link_to p.name, p %></li>
               <% end %>
             <% end %>
+            <li class="divider"></li>
+            <li><a href="/projects/new"><b>+</b> New Project</a></li>
             
           </ul>
         </li>
@@ -34,13 +35,9 @@
             <li><%= link_to 'Hypotheses', project_hypotheses_path(@project)%></li>
             <li><%= link_to 'Assumptions', project_assumptions_path(@project)%></li>
             <li><%= link_to 'Experiments', project_experiments_path(@project)%></li>
-            <li class="divider"></li>
-            
-            
+            <li class="divider"></li>        
             <li><%= link_to 'Documents', project_documents_path(@project)%></li>
-            
             <li class="divider"></li>
-
             <li><%= link_to 'Members', project_memberships_path(@project)%></li>
           </ul>
         </li>
