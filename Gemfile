@@ -16,7 +16,7 @@ gem 'nokogiri'
 gem 'sidekiq'
 gem 'paper_trail'
 gem 'acts-as-taggable-on', '~> 2.3.1'
-
+gem "rolify"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
