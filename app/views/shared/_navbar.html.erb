@@ -1,7 +1,11 @@
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
+      <% if @project && !@project.new_record? %>
+        <%= link_to 'lean answers', @project, :class => 'brand'%>
+      <% else %>
       <a class="brand" href="/">lean answers</a>
+      <% end %>
       <% if logged_in? %>
       <ul class="nav">
         <li class="dropdown">

@@ -1,3 +1,10 @@
-<div class='page-header projects_title'><div class='project_image'><a href="#" class="thumbnail"><img src="http://placehold.it/80x80" alt=""></a></div><h2 class='project_title'><%= @project.name %></h2></div>
+<div class='page-header projects_title'>
+  <div class='project_image'>
+    <%= link_to image_tag("http://placehold.it/80x80", :height => 80, :width => 80), @project, :class => 'thumbnail' %>
+  </div>
+  <h2 class='project_title'>
+    <%= @project.name %>
+  </h2>
+</div>
 <hr style='clear:left;'/>
 <%= render :partial => 'dashboard' %>
