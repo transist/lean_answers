@@ -2,6 +2,15 @@
   padding-left:20px;
 }
 
+.project_title {
+  padding-left:10px;
+  float:left;
+  display:inline;
+  clear:none;
+  width:50%;
+  padding-bottom:20px;
+}
+
 .page-header h3 .dropdown-menu {
   font-size:12px;
 }
@@ -25,4 +34,11 @@ tr p.hypothesis_description {
 
 .page-header a:hover {
   color:orange;
+}
+
+.project_image {
+  width:85px;
+  display:inline;
+  float:left;
+  padding-bottom:10px;
 }

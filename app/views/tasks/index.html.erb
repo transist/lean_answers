@@ -1,5 +1,6 @@
 <%= render :partial => '/projects/experiments' %>
 <% content_for :skinny_sidebar do %>
+<%= render :partial => '/shared/project_image' %>
 <div class='row'>
   <div class='page-header'><h2 class='fake_margin'><%= link_to @project.name, @project %></h2></div>
 </div>
