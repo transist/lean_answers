@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	rolify
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :name
   has_secure_password  
   validates_presence_of :password, :on => :create
   validates_presence_of :email, :name

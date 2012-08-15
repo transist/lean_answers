@@ -17,8 +17,7 @@ development:
   encoding: unicode
   database: lsm_development
   pool: 5
-  username: scott
-  password:
+  username: simsicon
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -43,13 +42,12 @@ test:
   encoding: unicode
   database: lsm_test
   pool: 5
-  username: scott
-  password:
+  username: simsicon
 
 production:
   adapter: postgresql
   encoding: unicode
   database: lsm_production
   pool: 5
-  username: scott
-  password:
+  username: simsicon
+

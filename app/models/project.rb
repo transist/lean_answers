@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :tag_list
   has_many :customer_hypotheses, :class_name => "CustomerHypothesis", :foreign_key => "project_id"
   has_many :problem_hypotheses,  :class_name => "ProblemHypothesis",  :foreign_key => "project_id"
   has_many :solution_hypotheses, :class_name => "SolutionHypothesis", :foreign_key => "project_id"
