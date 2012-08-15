@@ -1,13 +1,11 @@
 Lsm::Application.routes.draw do
   
-  get "admin" => 'admin#index'
+  devise_for :users
 
-  match 'register' => 'users#new'
-  match 'login' => 'sessions#new'
-  match 'logout' => 'sessions#destroy'
+  get "admin" => 'admin#index'
   match 'search' => 'home#search'
   match 'settings' => 'users#edit'
-  resources :sessions
+  
   resources :surveys do 
     resources :questions do 
       resources :choices do
@@ -17,7 +15,8 @@ Lsm::Application.routes.draw do
     end
   end
   resources :studies
-  resources :users
+
+  resources :users, only: [:update]
   resources :projects do 
     resources :memberships do 
       member do

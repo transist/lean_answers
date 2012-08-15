@@ -10,8 +10,9 @@
   <% if content_for?(:navbar) %>
     <%= yield :navbar %>
   <% else %>
-    <%= render :partial => '/shared/navbar' %>
+    <%= render '/shared/navbar' %>
   <% end %>
-  <%= render :partial => '/shared/main' %>
+  <%= render '/shared/notice_and_alert' %>
+  <%= render '/shared/main' %>
 </body>
 </html>
