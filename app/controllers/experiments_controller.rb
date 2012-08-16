@@ -1,5 +1,8 @@
 class ExperimentsController < ApplicationController
   before_filter :load_project
+
+  load_and_authorize_resource :project
+  load_and_authorize_resource :experiment, :through => :project
   def index
     if @project
       @experiments = @project.experiments

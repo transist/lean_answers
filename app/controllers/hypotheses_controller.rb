@@ -1,5 +1,9 @@
 class HypothesesController < ApplicationController
   before_filter :lookup_project
+
+  load_and_authorize_resource :project
+  load_and_authorize_resource :hypothesis, :through => :project
+
   def index
     @hypotheses = @project.hypotheses
   end
@@ -22,7 +26,6 @@ class HypothesesController < ApplicationController
   end
   
   def create  
-    puts klass.to_s.underscore
     @hypothesis = klass.create(params[klass.to_s.underscore])
     @project.hypotheses << @hypothesis
     @hypothesis.make_current if params['current']

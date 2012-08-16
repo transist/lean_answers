@@ -1,5 +1,8 @@
 class ScorecardsController < ApplicationController
   before_filter :lookup_project
+
+  load_and_authorize_resource :project
+  load_and_authorize_resource :scorecard, :through => :project
   def index
     if params[:project_id]
       @scorecards = @project.scorecards
