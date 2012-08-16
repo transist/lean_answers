@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
+  attr_accessible :name, :email, :password, :password_confirmation
 	rolify
   validates_presence_of :email, :name
   validates_uniqueness_of :email

@@ -4,16 +4,13 @@ class ProjectsController < ApplicationController
   end
   
   def new  
-    @project = Project.new
   end  
   
-  def show  
-    @project = Project.find(params[:id])
+  def show
     @pane = false
   end
   
   def edit  
-    @project = Project.find(params[:id])
   end
   
   def create  
@@ -22,15 +19,20 @@ class ProjectsController < ApplicationController
     redirect_to @project, :notice => "Created!"  
   end
   
-  def update  
-    @project = Project.find(params[:id])
+  def update
     @project.update_attributes(params[:project])
     redirect_to @project, :notice => "Updated!"  
   end
   
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
     redirect_to projects_url, :notice => "Destroyed!"  
   end
+
+  private 
+  def authorized_user?
+    @project ||= params[:id] ? Project.find(params[:id]) : Project.new
+    @project.users.include?(current_user) 
+  end
+
 end
