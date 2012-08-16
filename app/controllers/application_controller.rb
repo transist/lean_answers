@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
+  
   before_filter do |controller|
     if controller.respond_to?(:authorized_user?, true)
       unless controller.send(:authorized_user?)
@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   end
   
   helper_method :current_users_projects
+
   include Mobylette::RespondToMobileRequests
 
 end
