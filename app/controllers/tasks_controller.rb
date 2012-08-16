@@ -1,5 +1,8 @@
 class TasksController < ApplicationController
   before_filter :lookup_project
+
+  load_and_authorize_resource :project
+  load_and_authorize_resource :task, :through => :project
   def index
     if params[:project_id]
       @tasks = @project.tasks

@@ -1,4 +1,7 @@
 class AssumptionsController < ApplicationController
+  load_and_authorize_resource :project
+  load_and_authorize_resource :assumption, :through => :project
+
   def index
     if params[:project_id]
       @project = Project.find(params[:project_id])

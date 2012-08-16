@@ -1,5 +1,8 @@
 class MembershipsController < ApplicationController
   before_filter :lookup_project
+
+  load_and_authorize_resource :project
+  load_and_authorize_resource :membership, :through => :project
   def index
     if params[:project_id]
       @memberships = @project.memberships
