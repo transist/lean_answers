@@ -24,24 +24,24 @@ class Project < ActiveRecord::Base
   has_many :documents
   has_many :tasks
   acts_as_ordered_taggable
-  
-  
+
+
   def current_assumptions
     h = Assumption.all(:conditions => {:project_id => self.id, :state => 'current'})
   end
-  
+
   def current_hypotheses
     h = Hypothesis.all(:conditions => {:project_id => self.id, :state => 'current'})
   end
-  
+
   def current_customer
     h = CustomerHypothesis.first(:conditions => {:project_id => self.id, :state => 'current'})
   end
-  
+
   def current_problem
     h = ProblemHypothesis.first(:conditions => {:project_id => self.id, :state => 'current'})
   end
-  
+
   def current_solution
     h = SolutionHypothesis.first(:conditions => {:project_id => self.id, :state => 'current'})
   end
