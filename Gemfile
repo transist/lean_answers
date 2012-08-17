@@ -53,7 +53,7 @@ end
 group :test do
   gem 'spork', require: nil
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', require: nil
   gem 'spinach-rails', require: nil
   gem 'launchy'
   gem 'capybara-webkit'
