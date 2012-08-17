@@ -1,4 +1,5 @@
 ENV['RAILS_ENV'] = 'test'
+require 'spinach-rails'
 require './config/environment'
 require 'rspec'
 require 'spinach/capybara'
