@@ -1,17 +1,3 @@
-# == Schema Information
-#
-# Table name: hypotheses
-#
-#  id         :integer          not null, primary key
-#  content    :text
-#  type       :string(255)
-#  project_id :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  state      :string(255)
-#  reason     :text
-#
-
 class Hypothesis < ActiveRecord::Base
   attr_accessible :content, :project_id, :type, :state, :reason
   belongs_to :project
