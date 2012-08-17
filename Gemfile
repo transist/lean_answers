@@ -39,6 +39,7 @@ group :development do
   gem 'guard-annotate', require: nil
   gem 'guard-bundler', require: nil
   gem 'guard-rspec', require: nil
+  gem 'guard-spork', require: nil
   gem 'guard-yard', require: nil
 end
 
@@ -50,6 +51,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'spork', require: nil
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'spinach-rails', require: nil
