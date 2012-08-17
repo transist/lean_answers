@@ -33,6 +33,11 @@ end
 group :development do
   gem 'foreman'
   gem 'unicorn'
+
+  gem 'guard', require: nil
+  gem 'guard-bundler', require: nil
+  gem 'guard-rspec', require: nil
+  gem 'guard-yard', require: nil
 end
 
 group :development, :test do
