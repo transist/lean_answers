@@ -34,3 +34,16 @@ class Project < ActiveRecord::Base
     h = SolutionHypothesis.first(:conditions => {:project_id => self.id, :state => 'current'})
   end
 end
+
+# == Schema Information
+#
+# Table name: projects
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :text
+#  state       :string(255)
+#
+

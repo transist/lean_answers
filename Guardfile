@@ -35,6 +35,6 @@ guard 'yard' do
   watch(%r{ext/.+\.c})
 end
 
-guard 'annotate', show_indexes: true do
-  watch( 'db/schema.rb' )
+guard 'annotate', position: 'after', show_indexes: true do
+  watch('db/schema.rb')
 end

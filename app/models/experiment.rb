@@ -5,3 +5,20 @@ class Experiment < ActiveRecord::Base
   has_one :solution_hypothesis, :class_name => "SolutionHypothesis", :foreign_key => "solution_hypothesis_id"
   belongs_to :project
 end
+
+# == Schema Information
+#
+# Table name: experiments
+#
+#  id                     :integer          not null, primary key
+#  name                   :text
+#  description            :text
+#  project_id             :integer
+#  customer_hypothesis_id :integer
+#  problem_hypothesis_id  :integer
+#  solution_hypothesis_id :integer
+#  state                  :string(255)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+

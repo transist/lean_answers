@@ -35,3 +35,18 @@ class Assumption < ActiveRecord::Base
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: assumptions
+#
+#  id         :integer          not null, primary key
+#  assumption :text
+#  position   :integer
+#  project_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  reason     :text
+#  state      :string(255)
+#
+
