@@ -33,8 +33,10 @@ end
 group :development do
   gem 'foreman'
   gem 'unicorn'
+  gem 'annotate'
 
   gem 'guard', require: nil
+  gem 'guard-annotate', require: nil
   gem 'guard-bundler', require: nil
   gem 'guard-rspec', require: nil
   gem 'guard-yard', require: nil

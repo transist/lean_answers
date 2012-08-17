@@ -24,3 +24,7 @@ guard 'yard' do
   watch(%r{lib/.+\.rb})
   watch(%r{ext/.+\.c})
 end
+
+guard 'annotate', show_indexes: true do
+  watch( 'db/schema.rb' )
+end
