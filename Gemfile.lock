@@ -127,6 +127,8 @@ GEM
       rails (>= 3.1.0)
     json (1.7.4)
     kgio (2.7.4)
+    launchy (2.1.0)
+      addressable (~> 2.2.6)
     libwebsocket (0.1.5)
       addressable
     listen (0.4.7)
@@ -291,6 +293,7 @@ DEPENDENCIES
   haml
   jquery-rails
   jquery_mobile_rails
+  launchy
   mobylette
   paper_trail
   pg
