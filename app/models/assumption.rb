@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: assumptions
+#
+#  id         :integer          not null, primary key
+#  assumption :text
+#  position   :integer
+#  project_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  reason     :text
+#  state      :string(255)
+#
+
 class Assumption < ActiveRecord::Base
   attr_accessible :assumption, :position, :project_id, :reason, :state
   scope :state, lambda { |state|
