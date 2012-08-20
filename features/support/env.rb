@@ -2,6 +2,7 @@ ENV['RAILS_ENV'] = 'test'
 require 'spinach-rails'
 require './config/environment'
 require 'rspec'
+require 'factory_girl_rails'
 require 'spinach/capybara'
 
 Capybara.javascript_driver = :webkit
