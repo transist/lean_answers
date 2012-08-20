@@ -1,19 +1,5 @@
 <%= render :partial => '/projects/memberships' %>
 <% content_for :skinny_sidebar do %>
 <%= render :partial => '/shared/project_image', :locals => {:link => url_for(@project)} %>
-<div class='row fake_margin'>
-  <div class='page-header'><h2><%= link_to @project.name, @project %></h2></div>
-</div>
-<div class='column'>
-  <% if @project.description != '' %>
-  <h3>Project Description</h3>
-  <p>
-    <%= @project.description %>
-    <br/><br/>
-
-    <br/>
-  </p>
-  <% end %>
-  <%= link_to 'Edit', edit_project_path(@project), :class => 'btn btn-small'%><br/><br/>
-</div>
+<%= render :partial => '/shared/project_description_side', :locals => {:project => @project} %>
 <% end %>

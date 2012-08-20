@@ -1,0 +1,17 @@
+<div class='row fake_margin'>
+  <div class='page-header'><h2><%= link_to project.name, project %></h2></div>
+</div>
+<div class='column'>
+  <% if project.description != '' %>
+  <h3>Project Description</h3>
+  <p>
+    <%= project.description %>
+    <br/><br/>
+
+    <br/>
+  </p>
+  <% end %>
+  <% if can? :update, project %>
+    <%= link_to 'Edit', edit_project_path(project), :class => 'btn btn-small'%><br/><br/>
+  <% end %>
+</div>
