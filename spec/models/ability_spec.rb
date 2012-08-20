@@ -4,45 +4,59 @@ describe Ability do
   let(:user) { create(:user) }
   let(:project) { create(:project) }
   let(:ability) { Ability.new(user) }
-  subject { ability }
 
-  context 'project' do
-    it 'should be created by any user' do
-      expect be_can(:create, Project)
+  context 'Project' do
+    context 'owner' do
+      it 'should be able to manage' do
+        project = user.create_project
+        expect(ability).to be_can(:manage, project)
+      end
     end
 
-    it 'should be managed by admin' do
-      project = user.create_project
-      expect be_can(:manage, project)
+    context 'admin' do
+      it 'should be able to manage' do
+        project.add_admin(user)
+        expect(ability).to be_can(:manage, project)
+      end
     end
 
-    it 'should be read by member' do
-      project.users << user
-      expect(ability).to be_can(:read, project)
+    context 'member' do
+      it 'should be able to read' do
+        project.add_member(user)
+        expect(ability).to be_can(:read, project)
+      end
+
+      it 'should not be able to update and destroy' do
+        project.add_member(user)
+        expect(ability).to be_cannot(:update, project)
+        expect(ability).to be_cannot(:destroy, project)
+      end
     end
 
-    it 'should not be managed by member' do
-      project.users << user
-      expect(ability).not_to be_can(:update, project)
-      expect(ability).not_to be_can(:destroy, project)
+    context 'non-member' do
+      it 'should be able to create' do
+        expect(ability).to be_can(:create, project)
+      end
+
+      it 'should not be able to access' do
+        expect(ability).to be_cannot(:read, project)
+        expect(ability).to be_cannot(:update, project)
+        expect(ability).to be_cannot(:destroy, project)
+      end
     end
 
-    it 'should not be accessible by non-member' do
-      expect(ability).not_to be_can(:read, project)
-      expect(ability).not_to be_can(:update, project)
-      expect(ability).not_to be_can(:destroy, project)
-    end
+    context 'guest' do
+      let(:ability) { Ability.new(nil) }
 
-    it 'should be created by any user' do
-      expect be_can(:create, project)
-    end
+      it 'should not be able to create' do
+        expect(ability).to be_cannot(:create, project)
+      end
 
-    it 'should not be accessible by guest' do
-      ability = Ability.new(nil)
-      expect(ability).not_to be_can(:read, project)
-      expect(ability).not_to be_can(:create, project)
-      expect(ability).not_to be_can(:update, project)
-      expect(ability).not_to be_can(:destroy, project)
+      it 'should not be able to access' do
+        expect(ability).to be_cannot(:read, project)
+        expect(ability).to be_cannot(:update, project)
+        expect(ability).to be_cannot(:destroy, project)
+      end
     end
   end
 end

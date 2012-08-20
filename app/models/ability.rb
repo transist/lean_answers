@@ -4,7 +4,12 @@ class Ability
   def initialize(user)
     user ||= User.new # Guest who hasn't signed in
 
-    can :manage, Project, memberships: {user_id: user.id}
+    can :manage, Project do |project|
+      project.owner == user or project.admins.include?(user)
+    end
+    can :read, Project do |project|
+      project.members.include?(user)
+    end
     can :create, Project if user.persisted?
     can :manage, Task, project: {memberships: {user_id: user.id}}
     can :manage, Scorecard, project: {memberships: {user_id: user.id}}

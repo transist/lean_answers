@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Project do
   let(:project) { create(:project) }
+  let(:user) { create(:user) }
 
   it 'should create instance via factory' do
     expect {
@@ -13,6 +14,40 @@ describe Project do
     it 'should return owner of the project' do
       membership = project.memberships.owner.first
       expect(project.owner) == membership.user
+    end
+  end
+
+  describe '#add_admin' do
+    it 'should set user as admin of the project' do
+      project.add_admin(user)
+      expect(project.admins).to include(user)
+    end
+
+    it 'should set user as member of the project' do
+      project.add_admin(user)
+      expect(project.members).to include(user)
+    end
+
+    it 'should not set user as owner of the project' do
+      project.add_admin(user)
+      expect(project.owner) != user
+    end
+  end
+
+  describe '#add_member' do
+    it 'should set user as member of the project' do
+      project.add_member(user)
+      expect(project.members).to include(user)
+    end
+
+    it 'should not set user as admin of the project' do
+      project.add_member(user)
+      expect(project.admins).not_to include(user)
+    end
+
+    it 'should not set user as owner of the project' do
+      project.add_member(user)
+      expect(project.owner) != user
     end
   end
 end

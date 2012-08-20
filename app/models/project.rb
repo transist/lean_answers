@@ -39,6 +39,11 @@ class Project < ActiveRecord::Base
     h = SolutionHypothesis.first(:conditions => {:project_id => self.id, :state => 'current'})
   end
 
+  def add_admin(user)
+    memberships.admin.create(user: user)
+    add_member(user)
+  end
+
   def add_member(user)
     memberships.member.create(user: user)
   end

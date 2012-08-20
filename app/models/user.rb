@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   def create_project
     project = projects.create
-    project.add_member(self)
+    project.add_admin(self)
     project
   end
 end

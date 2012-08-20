@@ -10,12 +10,17 @@ describe User do
       }.to change(user.projects, :count).by(1)
     end
 
-    it 'should set user as the owner of the project' do
+    it 'should set user as owner of the project' do
       project = user.create_project
       expect(project.owner) == user
     end
 
-    it 'should set user as the member of the project' do
+    it 'should set user as admin of the project' do
+      project = user.create_project
+      expect(project.admins).to include(user)
+    end
+
+    it 'should set user as member of the project' do
       project = user.create_project
       expect(project.members).to include(user)
     end
