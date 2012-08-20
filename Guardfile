@@ -29,7 +29,7 @@ guard 'rspec', version: 2, cli: '--drb' do
   watch('app/controllers/application_controller.rb')  { 'spec/controllers' }
 end
 
-guard 'yard' do
+guard 'yard', stdout: '/dev/null', stderr: '/dev/null' do
   watch(%r{app/.+\.rb})
   watch(%r{lib/.+\.rb})
   watch(%r{ext/.+\.c})
