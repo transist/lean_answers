@@ -10,8 +10,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.create(params[:project])
-    Membership.create(:user_id => current_user.id, :project_id => @project.id, :membership_type => :owner)
+    @project = current_user.create_project(params[:project])
     redirect_to @project, :notice => "Created!"
   end
 

@@ -10,6 +10,11 @@ describe User do
       }.to change(user.projects, :count).by(1)
     end
 
+    it 'accept attributes of the project' do
+      project = user.create_project(name: 'LeanAnswers')
+      expect(project.name) == 'LeanAnswers'
+    end
+
     it 'should set user as owner of the project' do
       project = user.create_project
       expect(project.owner) == user

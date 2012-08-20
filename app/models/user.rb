@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
     true
   end
 
-  def create_project
-    project = projects.create
+  def create_project(attributes = {})
+    project = projects.create(attributes)
     project.add_admin(self)
     project
   end
