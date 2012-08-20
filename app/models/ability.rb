@@ -11,12 +11,13 @@ class Ability
       project.members.include?(user)
     end
     can :create, Project if user.persisted?
-    can :manage, Task, project: {memberships: {user_id: user.id}}
-    can :manage, Scorecard, project: {memberships: {user_id: user.id}}
-    can :manage, Hypothesis, project: {memberships: {user_id: user.id}}
-    can :manage, Assumption, project: {memberships: {user_id: user.id}}
-    can :manage, Experiment, project: {memberships: {user_id: user.id}}
-    can :manage, Document, project: {memberships: {user_id: user.id}}
-    can :manage, Membership, user_id: user.id
+
+    can :manage, [Task, Scorecard, Hypothesis, Assumption, Experiment, Document] do |resource|
+      resource.project.members.include?(user)
+    end
+
+    can :manage, Membership do |membership|
+      membership.project.admins.include?(user)
+    end
   end
 end

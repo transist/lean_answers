@@ -59,4 +59,57 @@ describe Ability do
       end
     end
   end
+
+  [Task, Scorecard, Hypothesis, Assumption, Experiment, Document].each do |resource|
+    context "#{resource.to_s} of Project" do
+      context 'member' do
+        it 'should be able to manage' do
+          project.add_member(user)
+          expect(ability).to be_can(:manage, project.send(resource.to_s.tableize).new)
+        end
+      end
+
+      context 'non-member' do
+        it 'should not be able to manage' do
+          expect(ability).to be_cannot(:manage, project.send(resource.to_s.tableize).new)
+        end
+      end
+
+      context 'guest' do
+        it 'should not be able to manage' do
+          ability = Ability.new(nil)
+          expect(ability).to be_cannot(:manage, project.send(resource.to_s.tableize).new)
+        end
+      end
+    end
+  end
+
+  context 'Membership of Project' do
+    context 'admin' do
+      it 'should be able to manage' do
+        project.add_admin(user)
+        expect(ability).to be_can(:manage, project.memberships.new)
+      end
+    end
+
+    context 'member' do
+      it 'should be able to manage' do
+        project.add_member(user)
+        expect(ability).to be_cannot(:manage, project.memberships.new)
+      end
+    end
+
+    context 'non-member' do
+      it 'should be able to manage' do
+        expect(ability).to be_cannot(:manage, project.memberships.new)
+      end
+    end
+
+    context 'guest' do
+      it 'should not be able to manage' do
+        ability = Ability.new(nil)
+        expect(ability).to be_cannot(:manage, project.memberships.new)
+      end
+    end
+  end
 end
