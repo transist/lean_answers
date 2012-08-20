@@ -7,6 +7,14 @@ class Membership < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
+  # Type of a membership between {User} and {Project}.
+  # We use different type of memberships for different roles. So:
+  #
+  # * Owner of a project have :owner, :admin and :member memberships.
+  # * Admin of a project have :admin and :member memberships.
+  # * Member of a project only have :member membership.
+  #
+  # @attribute [r]
   enumerize :membership_type, in: MEMBERSHIP_TYPES, default: :owner
 
   MEMBERSHIP_TYPES.each do |type|

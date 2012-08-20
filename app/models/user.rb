@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
     true
   end
 
+  # Create a project for current user with optional attributes.
+  # This will create three memberships: :owner, :admin and :member.
+  #
+  # @see Membership
+
   def create_project(attributes = {})
     project = projects.create(attributes)
     project.add_admin(self)
