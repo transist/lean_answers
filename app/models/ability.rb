@@ -5,7 +5,7 @@ class Ability
     user ||= User.new # Guest who hasn't signed in
 
     can :manage, Project do |project|
-      project.owner == user or project.admins.include?(user)
+      project.admins.include?(user)
     end
     can :read, Project do |project|
       project.members.include?(user)
