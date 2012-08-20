@@ -1,5 +1,5 @@
 <div class="btn-toolbar pull-right">
   <div class="btn-group">
-    <%= link_to 'Delete', project_membership_path(project, membership), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-small pull-right' unless membership.membership_type == 'Owner' %>
+    <%= link_to 'Delete', project_membership_path(project, membership), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-small pull-right' unless membership.membership_type.owner? %>
   </div>
 </div>

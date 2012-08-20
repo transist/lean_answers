@@ -6,16 +6,22 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-	rolify
+  rolify
   validates_presence_of :email, :name
   validates_uniqueness_of :email
   has_many :memberships
-  has_many :projects, :through => :memberships
+  has_many :projects, :through => :memberships, uniq: true
   has_many :task_assignments
   has_many :tasks, :through => :task_assignments
-  
+
   def admin?
     true
+  end
+
+  def create_project
+    project = projects.create
+    project.add_member(self)
+    project
   end
 end
 

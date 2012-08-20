@@ -7,6 +7,6 @@ FactoryGirl.define do
   end
 
   factory :owner_membership, parent: :membership  do
-    membership_type 'Owner'
+    membership_type :owner
   end
 end

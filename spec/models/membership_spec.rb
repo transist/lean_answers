@@ -6,4 +6,10 @@ describe Membership do
       create(:membership)
     }.to change(Membership, :count).by(1)
   end
+
+  describe '.owner' do
+    it 'should return owner memberships' do
+      pending 'Seems hard to test'
+    end
+  end
 end

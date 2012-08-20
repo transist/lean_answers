@@ -12,7 +12,7 @@ describe Ability do
     end
 
     it 'should be managed by admin' do
-      project = user.projects.create
+      project = user.create_project
       expect be_can(:manage, project)
     end
 
