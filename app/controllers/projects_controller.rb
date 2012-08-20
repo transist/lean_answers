@@ -11,18 +11,16 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_user.create_project(params[:project])
-    redirect_to @project, :notice => "Created!"
+    redirect_to @project, notice: 'Created!'
   end
 
   def update
-    @project = Project.find_by_id(params[:id])
     @project.update_attributes(params[:project])
-    redirect_to @project, :notice => "Updated!"
+    redirect_to @project, notice: 'Updated!'
   end
 
   def destroy
-    @project = Project.find_by_id(params[:id])
     @project.destroy
-    redirect_to projects_url, :notice => "Destroyed!"
+    redirect_to projects_url, notice: 'Destroyed!'
   end
 end
