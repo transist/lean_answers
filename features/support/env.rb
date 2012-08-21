@@ -5,6 +5,8 @@ require 'rspec'
 require 'factory_girl_rails'
 require 'spinach/capybara'
 
+Dir[Rails.root.join('features/steps/shared/**/*.rb')].each {|f| require f }
+
 Capybara.javascript_driver = :webkit
 
 Spinach::FeatureSteps.class_eval do
