@@ -1,5 +1,5 @@
 Feature: User signin
-  In order to use LeanAnwsers app
+  In order to use LeanAnswers app
   As a existing user
   I want to be able to signin with my account
 
