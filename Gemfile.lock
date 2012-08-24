@@ -53,6 +53,7 @@ GEM
       activerecord (>= 3.0.0)
     awesome_print (1.0.2)
     bcrypt-ruby (3.0.1)
+    binding_of_caller (0.6.7)
     bootstrap-sass (2.0.4.0)
     builder (3.0.0)
     cancan (1.6.8)
@@ -167,8 +168,12 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.7.1)
       slop (>= 2.4.4, < 3)
+    pry-nav (0.2.1)
+      pry (~> 0.9.9)
     pry-rails (0.1.6)
       pry
+    pry-stack_explorer (0.4.5)
+      binding_of_caller (~> 0.6.2)
     quiet_assets (1.0.1)
       railties (~> 3.1)
     rack (1.4.1)
@@ -322,7 +327,9 @@ DEPENDENCIES
   paper_trail
   pg
   premailer
+  pry-nav
   pry-rails
+  pry-stack_explorer
   quiet_assets
   rails (= 3.2.6)
   rolify

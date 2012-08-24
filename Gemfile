@@ -48,6 +48,8 @@ end
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'pry-nav'
+  gem 'pry-stack_explorer'
   gem 'awesome_print'
   gem 'quiet_assets'
   gem 'rspec-rails'
