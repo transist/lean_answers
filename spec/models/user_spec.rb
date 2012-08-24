@@ -12,12 +12,12 @@ describe User do
 
     it 'accept attributes of the project' do
       project = user.create_project(name: 'LeanAnswers')
-      expect(project.name) == 'LeanAnswers'
+      expect(project.name).to eq('LeanAnswers')
     end
 
     it 'should set user as owner of the project' do
       project = user.create_project
-      expect(project.owner) == user
+      expect(project.owner).to eq(user)
     end
 
     it 'should set user as admin of the project' do

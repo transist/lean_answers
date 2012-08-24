@@ -13,7 +13,7 @@ describe Project do
   describe '#owner' do
     it 'should return owner of the project' do
       membership = project.memberships.owner.first
-      expect(project.owner) == membership.user
+      expect(project.owner).to eq(membership.user)
     end
   end
 
@@ -30,7 +30,7 @@ describe Project do
 
     it 'should not set user as owner of the project' do
       project.add_admin(user)
-      expect(project.owner) != user
+      expect(project.owner).not_to eq(user)
     end
   end
 
@@ -47,7 +47,7 @@ describe Project do
 
     it 'should not set user as owner of the project' do
       project.add_member(user)
-      expect(project.owner) != user
+      expect(project.owner).not_to eq(user)
     end
   end
 end
