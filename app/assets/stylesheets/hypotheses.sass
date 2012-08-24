@@ -1,0 +1,23 @@
+.CustomerHypothesis
+  .type
+    @extend .label
+    @extend .label-info
+
+.ProblemHypothesis
+  .type
+    @extend .label
+    @extend .label-warning
+
+.SolutionHypothesis
+  .type
+    @extend .label
+    @extend .label-important
+
+.state
+  @extend .label
+  &.current
+    @extend .label-info
+  &.rejected
+    @extend .label-inverse
+  &.accepted
+    @extend .label-success
