@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class ProjectsController < InheritedResources::Base
   load_and_authorize_resource
 
   def index
@@ -7,20 +7,11 @@ class ProjectsController < ApplicationController
 
   def show
     @pane = false
+    show!
   end
 
   def create
     @project = current_user.create_project(params[:project])
-    redirect_to @project, notice: 'Created!'
-  end
-
-  def update
-    @project.update_attributes(params[:project])
-    redirect_to @project, notice: 'Updated!'
-  end
-
-  def destroy
-    @project.destroy
-    redirect_to projects_url, notice: 'Destroyed!'
+    create!
   end
 end

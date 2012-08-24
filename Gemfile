@@ -25,6 +25,7 @@ gem 'mobylette'
 gem 'jquery_mobile_rails'
 gem 'enumerize'
 gem 'slim-rails'
+gem 'inherited_resources'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
