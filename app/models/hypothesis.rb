@@ -1,6 +1,9 @@
 class Hypothesis < ActiveRecord::Base
-  attr_accessible :content, :project_id, :type, :state, :reason
+  attr_accessible :content, :project_id, :type, :state, :reason, :mark_as_current_after_create
   belongs_to :project
+
+  attr_accessor :mark_as_current_after_create
+
   scope :state, lambda { |state|
      first(conditions: {state: state})
    }
@@ -12,29 +15,14 @@ class Hypothesis < ActiveRecord::Base
       where(type: t)
     }
 
-  def after_create
-    make_current
-  end
+
+  after_create :make_current
 
   state_machine :state, initial: :backlogged do
     before_transition any => :current, do: :pend_other_hypotheses
-    #
-    # after_transition on: :crash, do: :tow
-    # after_transition on: :repair, do: :fix
-    # after_transition any => :parked do |vehicle, transition|
-    #   vehicle.seatbelt_on = false
-    # end
-    #
-    # after_failure on: :ignite, do: :log_start_failure
-    #
-    # around_transition do |vehicle, transition, block|
-    #   start = Time.now
-    #   block.call
-    #   vehicle.time_used += Time.now - start
-    # end
-    #
+
     event :make_current do
-      transition all => :current
+      transition all => :current, if: :mark_as_current_after_create
     end
 
     event :pend do
@@ -48,57 +36,21 @@ class Hypothesis < ActiveRecord::Base
     event :reject do
       transition all => :rejected
     end
-    #
-    # event :ignite do
-    #   transition stalled: same, parked: :idling
-    # end
-    #
-    # event :idle do
-    #   transition first_gear: :idling
-    # end
-    #
-    # event :shift_up do
-    #   transition idling: :first_gear, first_gear: :second_gear, second_gear: :third_gear
-    # end
-    #
-    # event :shift_down do
-    #   transition third_gear: :second_gear, second_gear: :first_gear
-    # end
-    #
-    # event :crash do
-    #   transition all - [:parked, stalled]: :stalled, if: lambda {|vehicle| !vehicle.passed_inspection?}
-    # end
-    #
-    # event :repair do
-    #   # The first transition that matches the state and passes its conditions
-    #   # will be used
-    #   transition stalled: :parked, unless: :auto_shop_busy
-    #   transition stalled: same
-    # end
-    #
+
     state :current do
       def say
         puts 'hiya'
       end
     end
-    #
-    # state :idling, :first_gear do
-    #   def speed
-    #     10
-    #   end
-    # end
-    #
-    # state all - [:parked, :stalled, :idling] do
-    #   def moving?
-    #     true
-    #   end
-    # end
-    #
-    # state :parked, :stalled, :idling do
-    #   def moving?
-    #     false
-    #   end
-    # end
+  end
+
+  def mark_as_current_after_create
+    @mark_as_current_after_create = true if @mark_as_current_after_create.nil?
+    if %w(1 true).include?(@mark_as_current_after_create.to_s)
+      true
+    else
+      false
+    end
   end
 
   def ensure_current

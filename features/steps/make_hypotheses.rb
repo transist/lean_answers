@@ -15,9 +15,9 @@ class MakeHypotheses < Spinach::FeatureSteps
     make_hypothesis('customer')
   end
 
-  Then 'the customer hypothesis should be created as backlogged' do
+  Then 'it should be created as current customer hypothesis' do
     page.current_path.should == project_hypotheses_path(@project)
-    within('#backlogged .CustomerHypothesis') do
+    within('#current .CustomerHypothesis') do
       page.should have_content('Content of customer hypothesis')
     end
   end
@@ -26,9 +26,9 @@ class MakeHypotheses < Spinach::FeatureSteps
     make_hypothesis('problem')
   end
 
-  Then 'the problem hypothesis should be created as backlogged' do
+  Then 'it should be created as current problem hypothesis' do
     page.current_path.should == project_hypotheses_path(@project)
-    within('#backlogged .ProblemHypothesis') do
+    within('#current .ProblemHypothesis') do
       page.should have_content('Content of problem hypothesis')
     end
   end
@@ -37,9 +37,9 @@ class MakeHypotheses < Spinach::FeatureSteps
     make_hypothesis('solution')
   end
 
-  Then 'the solution hypothesis should be created as backlogged' do
+  Then 'it should be created as current solution hypothesis' do
     page.current_path.should == project_hypotheses_path(@project)
-    within('#backlogged .SolutionHypothesis') do
+    within('#current .SolutionHypothesis') do
       page.should have_content('Content of solution hypothesis')
     end
   end

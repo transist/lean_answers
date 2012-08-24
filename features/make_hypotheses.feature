@@ -17,16 +17,16 @@ Feature: Make hypotheses
     Given there is a project
     And I signed in as a member of the project
     When I make a customer hypothesis
-    Then the customer hypothesis should be created as backlogged
+    Then it should be created as current customer hypothesis
 
   Scenario: Make problem hypothesis
     Given there is a project
     And I signed in as a member of the project
     When I make a problem hypothesis
-    Then the problem hypothesis should be created as backlogged
+    Then it should be created as current problem hypothesis
 
   Scenario: Make solution hypothesis
     Given there is a project
     And I signed in as a member of the project
     When I make a solution hypothesis
-    Then the solution hypothesis should be created as backlogged
+    Then it should be created as current solution hypothesis
