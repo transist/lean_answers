@@ -1,38 +1,32 @@
-class HypothesesController < ApplicationController
-  before_filter :lookup_project
+class HypothesesController < InheritedResources::Base
+  belongs_to :project
 
   load_and_authorize_resource :project
-  load_and_authorize_resource :hypothesis, :through => :project
+  load_and_authorize_resource :hypothesis, through: :project
 
-  def index
-    @hypotheses = @project.hypotheses
-  end
-  
-  def new  
-    if klass.to_s == 'Hypothesis'
-      @hypothesis = get_hypothesis_type
-    else
-      @hypothesis = klass.new
+  def new
+    if %w(CustomerHypothesis ProblemHypothesis SolutionHypothesis).include?(params[:type])
+      resource.type = params[:type]
     end
-  end  
-  
-  def show  
-    @hypothesis = klass.find(params[:id])
+    new!
+  end
+
+  def show
     @pane = true
   end
-  
-  def edit  
+
+  def edit
     @hypothesis = klass.find(params[:id])
   end
-  
-  def create  
-    @hypothesis = klass.create(params[klass.to_s.underscore])
-    @project.hypotheses << @hypothesis
-    @hypothesis.make_current if params['current']
-    redirect_to project_url(@project), :notice => "Created!"  
+
+  def create
+    if %w(CustomerHypothesis ProblemHypothesis SolutionHypothesis).include?(params[:type])
+      resource.type = params[:type]
+    end
+    create! { project_hypotheses_path }
   end
-  
-  def update  
+
+  def update
     @hypothesis = klass.find(params[:id])
     p = params[klass.to_s.underscore].dup
     p.delete(:state)
@@ -41,36 +35,13 @@ class HypothesesController < ApplicationController
     @hypothesis.reject if params[klass.to_s.underscore]['state'] == 'rejected'
     @hypothesis.make_current if params[klass.to_s.underscore]['state'] == 'current'
     @hypothesis.pend if params[klass.to_s.underscore]['state'] == 'pending'
-    redirect_to project_url(@project), :notice => "Updated!"  
+    redirect_to project_url(@project), notice: "Updated!"
   end
-  
+
   def destroy
     @hypothesis = klass.find(params[:id])
     @hypothesis.ensure_current if @hypothesis.state == 'current'
     @hypothesis.destroy
-    redirect_to project_url(@project), :notice => "Destroyed!"  
-  end
-  
-  private
-  
-  def get_hypothesis_type
-    case params[:type]
-    when 'customer'
-      @hypothesis = CustomerHypothesis.new
-    when 'problem'
-      @hypothesis = ProblemHypothesis.new
-    when 'solution'
-      @hypothesis = SolutionHypothesis.new
-    end
-    @hypothesis = Hypothesis.new if @hypothesis == nil
-    @hypothesis
-  end
-  
-  def lookup_project
-    @project = Project.find(params[:project_id])
-  end
-  
-  def klass
-    Hypothesis
+    redirect_to project_url(@project), notice: "Destroyed!"
   end
 end

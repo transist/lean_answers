@@ -1,0 +1,15 @@
+.page-header
+  h1= new_hypothesis_title(@hypothesis)
+= form_for([@project, @hypothesis]) do |f|
+  fieldset
+    .control-group
+      .controls
+        = f.label :content, 'Hypothesis', class: 'control-label'
+        = f.text_area :content, placeholder: 'Hypothesis', class: 'span6',rows: 5
+        = f.hidden_field :type, value: @hypothesis.type
+    label.control-label for="name"
+    .controls
+      = check_box_tag :current, :checkbox, value: true
+  .actions
+    = f.submit 'Create', class: 'btn btn-large btn-primary'
+    = link_to 'Cancel', project_url(@project),  class: 'btn btn-large'

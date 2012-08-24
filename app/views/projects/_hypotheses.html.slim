@@ -1,0 +1,52 @@
+.page-header
+  h3
+    | Hypotheses
+    span.btn-group.pull-right
+      a.btn.dropdown-toggle data-toggle="dropdown" href="#"
+        | New Hypothesis
+        span.caret
+      ul.dropdown-menu
+        li= link_to 'New Customer Hypothesis', new_project_hypothesis_path(@project, type: CustomerHypothesis)
+        li= link_to 'New Problem Hypothesis', new_project_hypothesis_path(@project, type: ProblemHypothesis)
+        li= link_to 'New Solution Hypothesis', new_project_hypothesis_path(@project, type: SolutionHypothesis)
+.tabbable
+  /! Only required for left/right tabs
+  ul.nav.nav-tabs
+    li.active
+      a data-toggle="tab" href="#current" Current
+    li
+      a data-toggle="tab" href="#backlogged" Pending
+    li
+      a data-toggle="tab" href="#all" All
+    li
+      a data-toggle="tab" href="#accepted" Accepted
+    li
+      a data-toggle="tab" href="#rejected" Rejected
+  .tab-content
+    #current.tab-pane.active
+      - if @project.current_hypotheses.size > 0
+        table.table.table-bordered
+          = render partial: '/projects/hypothesis_row', locals: {hypothesis: @project.current_customer, hypothesis_type: 'customer'}
+          = render partial: '/projects/hypothesis_row', locals: {hypothesis: @project.current_problem, hypothesis_type: 'problem'}
+          = render partial: '/projects/hypothesis_row', locals: {hypothesis: @project.current_solution, hypothesis_type: 'solution'}
+      - else
+        = render partial: '/projects/no_hypotheses', locals: {project: @project }
+    #all.tab-pane
+      - if @project.hypotheses.size > 0
+        table.table.table-bordered
+          - @project.hypotheses.state_all('current').each do |p|
+            = render partial: '/projects/hypothesis_row', locals: {hypothesis: p}
+          - @project.hypotheses.state_all('accepted').each do |p|
+            = render partial: '/projects/hypothesis_row', locals: {hypothesis: p}
+          - @project.hypotheses.state_all('pending').each do |p|
+            = render partial: '/projects/hypothesis_row', locals: {hypothesis: p}
+          - @project.hypotheses.state_all('rejected').each do |p|
+            = render partial: '/projects/hypothesis_row', locals: {hypothesis: p}
+      - else
+        = render partial: '/projects/no_hypotheses', locals: {project: @project }
+    #accepted.tab-pane
+      = render partial: '/projects/hypothesis_table', locals: {hypotheses: @project.hypotheses.state_all('accepted')}
+    #backlogged.tab-pane
+      = render partial: '/projects/hypothesis_table', locals: {hypotheses:  @project.hypotheses.state_all('backlogged')}
+    #rejected.tab-pane
+      = render partial: '/projects/hypothesis_table', locals: {hypotheses:  @project.hypotheses.state_all('rejected')}
