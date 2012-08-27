@@ -16,13 +16,13 @@ class Hypothesis < ActiveRecord::Base
     }
 
 
-  after_create :make_current
+  after_create :make_current, if: :mark_as_current_after_create
 
   state_machine :state, initial: :backlogged do
     before_transition any => :current, do: :pend_other_hypotheses
 
     event :make_current do
-      transition all => :current, if: :mark_as_current_after_create
+      transition all => :current
     end
 
     event :pend do

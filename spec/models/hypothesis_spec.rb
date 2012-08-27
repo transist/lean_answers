@@ -21,5 +21,11 @@ describe Hypothesis do
         expect(hypothesis).to be_backlogged
       end
     end
+
+    it 'should not prevent hypotheis transit to current manually' do
+      hypothesis = create(:hypothesis, mark_as_current_after_create: false)
+      hypothesis.make_current
+      expect(hypothesis).to be_current
+    end
   end
 end

@@ -9,7 +9,9 @@
         = f.hidden_field :type, value: @hypothesis.type
     label.control-label for="name"
     .controls
-      = f.check_box :mark_as_current_after_create
+      = f.label :mark_as_current_after_create do
+        =' f.check_box :mark_as_current_after_create
+        | Current
   .actions
     = f.submit 'Create', class: 'btn btn-large btn-primary'
     = link_to 'Cancel', project_url(@project),  class: 'btn btn-large'

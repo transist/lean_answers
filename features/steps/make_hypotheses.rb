@@ -44,13 +44,25 @@ class MakeHypotheses < Spinach::FeatureSteps
     end
   end
 
+  When 'I make a customer hypothesis with "Current" unchecked' do
+    make_hypothesis('customer', false)
+  end
+
+  Then 'it should be created as backlogged customer hypothesis' do
+    page.current_path.should == project_hypotheses_path(@project)
+    within('#backlogged .CustomerHypothesis') do
+      page.should have_content('Content of customer hypothesis')
+    end
+  end
+
   private
 
-  def make_hypothesis(type)
+  def make_hypothesis(type, current = true)
     visit project_path(@project)
     click_on 'Hypotheses'
     click_on "New #{type.camelize} Hypothesis"
     fill_in 'Hypothesis', with: "Content of #{type} hypothesis"
+    uncheck 'Current' unless current
     click_on 'Create'
   end
 end

@@ -30,3 +30,9 @@ Feature: Make hypotheses
     And I signed in as a member of the project
     When I make a solution hypothesis
     Then it should be created as current solution hypothesis
+
+  Scenario: Make backlogged customer hypothesis
+    Given there is a project
+    And I signed in as a member of the project
+    When I make a customer hypothesis with "Current" unchecked
+    Then it should be created as backlogged customer hypothesis
